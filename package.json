@@ -1,0 +1,16 @@
+{
+  "name": "google-analytics-email-tag",
+  "version": "1.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "uglifyjs src/script.js --compress --output dist/script.min.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "uglify-js": "^3.6.8"
+  }
+}
