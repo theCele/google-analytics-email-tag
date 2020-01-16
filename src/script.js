@@ -1,4 +1,4 @@
-function setMarketingAnalyticsTag(analytics_code, view_code, client_name, smtpjs_token) {
+function setMarketingAnalyticsTag(analytics_code, view_code, client_name, email_from, email_to, smtpjs_token) {
     // set up google analytcs
     if (!window['ga']) {(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');}
 
@@ -54,9 +54,9 @@ function setMarketingAnalyticsTag(analytics_code, view_code, client_name, smtpjs
             document.querySelector('body').innerHTML = '<h1 style="text-align: center; color: #000">Please Confirm<br><button id="utm_agree_button">CONFIRM</button></h1>';
             document.querySelector('#utm_agree_button').addEventListener('click', function() {
                 Email.send({
-                    SecureToken : window['smtpjs_token'],
-                    To : 'sophie.carter@marketingfilms.tv',
-                    From : "unsubscribe@marketingfilms.tv",
+                    SecureToken : smtpjs_token,
+                    To : email_to,
+                    From : email_from,
                     Subject :  client_name + " - Unsubscribe",
                     Body : "ID: " + cns_analytics_params[cns_param_options.id_unsubscribe] + ", CAMPAIGN: " + cns_analytics_params[cns_param_options.campaign_unsubscribe] + ", EMAIL: " + cns_analytics_params[cns_param_options.email_unsubscribe]
                 }).then(function(){

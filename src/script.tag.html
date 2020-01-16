@@ -1,9 +1,11 @@
-<script src="https://cdn.jsdelivr.net/gh/theCele/google-analytics-email-tag/dist/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/theCele/google-analytics-email-tag/dist/v1.min.js"></script>
 <script>
     var analytics_code = 'UA-101764634-2';
     var view_code = '202716857';
-    var client_name = 'Marketing Films';
+    var client_name = 'Marketing Films | Tim Cumming';
     var smtpjs_token =  "673d4a6b-227b-4b9f-b6cd-b0d866899345";
+    var email_from = "unsubscribe@marketingfilms.tv";
+    var email_to = "sophie.carter@marketingfilms.tv";
 
-    setMarketingAnalyticsTag(analytics_code, view_code, client_name, smtpjs_token);
+    setMarketingAnalyticsTag(analytics_code, view_code, client_name, email_from, email_to, smtpjs_token);
 </script>
