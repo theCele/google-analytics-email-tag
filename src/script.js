@@ -55,7 +55,7 @@ function setMarketingAnalyticsTag(analytics_code, view_code, client_name, smtpjs
             document.querySelector('#utm_agree_button').addEventListener('click', function() {
                 Email.send({
                     SecureToken : window['smtpjs_token'],
-                    To : 'unsubscribe@marketingfilms.tv',
+                    To : 'sophie.carter@marketingfilms.tv',
                     From : "unsubscribe@marketingfilms.tv",
                     Subject :  client_name + " - Unsubscribe",
                     Body : "ID: " + cns_analytics_params[cns_param_options.id_unsubscribe] + ", CAMPAIGN: " + cns_analytics_params[cns_param_options.campaign_unsubscribe] + ", EMAIL: " + cns_analytics_params[cns_param_options.email_unsubscribe]
