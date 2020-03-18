@@ -50,8 +50,11 @@ function setMarketingAnalyticsTag(analytics_code, view_code, client_name, email_
         ga('cns.send', 'pageview');
 
         if (cns_analytics_params[cns_param_options.id_unsubscribe]) {
-            document.body.style.background = "#ffffff";
-            document.querySelector('body').innerHTML = '<h1 style="text-align: center; color: #000">Please Confirm<br><button id="utm_agree_button">CONFIRM</button></h1>';
+            if (!document.querySelector('#utm_agree_button')) {
+                document.body.style.background = "#ffffff";
+                document.querySelector('body').innerHTML = '<h1 style="text-align: center; color: #000">Please Confirm<br><button id="utm_agree_button">CONFIRM</button></h1>';    
+            }
+
             document.querySelector('#utm_agree_button').addEventListener('click', function() {
                 Email.send({
                     SecureToken : smtpjs_token,
@@ -60,6 +63,7 @@ function setMarketingAnalyticsTag(analytics_code, view_code, client_name, email_
                     Subject :  client_name + " - Unsubscribe",
                     Body : "ID: " + cns_analytics_params[cns_param_options.id_unsubscribe] + ", CAMPAIGN: " + cns_analytics_params[cns_param_options.campaign_unsubscribe] + ", EMAIL: " + cns_analytics_params[cns_param_options.email_unsubscribe]
                 }).then(function(){
+                    document.body.style.background = "#ffffff";
                     document.querySelector('body').innerHTML = '<h1 style="text-align: center; color: #000">Thank you</h1><p style="text-align: center; color: #000">You have been successfully removed from this subscriber list. You will no longer hear from us.</p>';
                 });
             });
