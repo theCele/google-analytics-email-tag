@@ -50,11 +50,6 @@ function setMarketingAnalyticsTag(analytics_code, view_code, client_name, email_
         });
         ga('cns.send', 'pageview');
 
-        // redirect
-        if (cns_analytics_params[cns_param_options.url_redirect]) {
-            window.location.replace(cns_analytics_params[cns_param_options.url_redirect]);
-        }
-
         // unsubscribe
         if (cns_analytics_params[cns_param_options.id_unsubscribe]) {
             if (!document.querySelector('#utm_agree_button')) {
@@ -74,6 +69,11 @@ function setMarketingAnalyticsTag(analytics_code, view_code, client_name, email_
                     document.querySelector('body').innerHTML = '<h1 style="text-align: center; color: #000">Thank you</h1><p style="text-align: center; color: #000">You have been successfully removed from this subscriber list. You will no longer hear from us.</p>';
                 });
             });
+        }
+
+        // redirect
+        if (cns_analytics_params[cns_param_options.url_redirect]) {
+            window.location.replace(cns_analytics_params[cns_param_options.url_redirect]);
         }
     }
 
