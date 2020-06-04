@@ -7,7 +7,7 @@
   "scripts": {
     "purge": "curl https://purge.jsdelivr.net/gh/theCele/google-analytics-email-tag/dist/script.min.js",
     "build": "uglifyjs src/script.js --compress --output dist/script.min.js",
-    "publish": "npm run build && git add . && git commit -m 'update' && git commit origin master && npm run purge"
+    "publish": "npm run build && git add . && git commit -m 'update' && git push origin master && npm run purge"
   },
   "keywords": [],
   "author": "",
