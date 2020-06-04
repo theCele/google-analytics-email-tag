@@ -10,6 +10,7 @@ function setMarketingAnalyticsTag(analytics_code, view_code, client_name, email_
         name: 'utm_campaign',
         source: 'utm_source',
         medium: 'utm_medium',
+        url_redirect: 'url_redirect',
         id_unsubscribe: 'utm_idunsubscribe',
         campaign_unsubscribe: 'utm_campaignunsubscribe',
         email_unsubscribe: 'utm_emailunsubscribe'
@@ -49,6 +50,12 @@ function setMarketingAnalyticsTag(analytics_code, view_code, client_name, email_
         });
         ga('cns.send', 'pageview');
 
+        // redirect
+        if (cns_analytics_params[cns_param_options.url_redirect]) {
+            window.location.replace(cns_analytics_params[cns_param_options.url_redirect]);
+        }
+
+        // unsubscribe
         if (cns_analytics_params[cns_param_options.id_unsubscribe]) {
             if (!document.querySelector('#utm_agree_button')) {
                 document.body.style.background = "#ffffff";
