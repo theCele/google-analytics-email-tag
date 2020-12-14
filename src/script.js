@@ -54,7 +54,7 @@ function setMarketingAnalyticsTag(analytics_code, view_code, client_name, email_
         if (cns_analytics_params[cns_param_options.id_unsubscribe]) {
             if (!document.querySelector('#utm_agree_button')) {
                 document.body.style.background = "#ffffff";
-                document.querySelector('body').innerHTML = '<h1 style="text-align: center; color: #000">Please Confirm<br><button id="utm_agree_button">CONFIRM</button></h1>';    
+                document.querySelector('body').innerHTML = '<h1 style="margin-top: 30vh; text-align: center; color: #000">Please Confirm<br><button id="utm_agree_button" style="width: 250px; text-align: center;">CONFIRM</button></h1>';    
             }
 
             document.querySelector('#utm_agree_button').addEventListener('click', function() {
@@ -64,10 +64,16 @@ function setMarketingAnalyticsTag(analytics_code, view_code, client_name, email_
                     From : email_from,
                     Subject :  client_name + " - Unsubscribe",
                     Body : "ID: " + cns_analytics_params[cns_param_options.id_unsubscribe] + ", CAMPAIGN: " + cns_analytics_params[cns_param_options.campaign_unsubscribe] + ", EMAIL: " + cns_analytics_params[cns_param_options.email_unsubscribe]
-                }).then(function(){
+                })
+                .then(function(){
                     document.body.style.background = "#ffffff";
                     document.querySelector('body').innerHTML = '<h1 style="text-align: center; color: #000">Thank you</h1><p style="text-align: center; color: #000">You have been successfully removed from this subscriber list. You will no longer hear from us.</p>';
-                });
+                })
+                .catch(function(err){
+                    console.error(err);
+                    document.body.style.background = "#ffffff";
+                    document.querySelector('body').innerHTML = '<h1 style="text-align: center; color: #000">Thank you</h1><p style="text-align: center; color: #000">We have technical dificulties, please try again later</p>';
+                })
             });
         }
 
